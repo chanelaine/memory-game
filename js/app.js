@@ -46,6 +46,7 @@ function shuffle(array) {
    if (clickTarget.classList.contains('card') && toggledCards.length <2) {
      toggleCard(clickTarget);
      addToggledCard(clickTarget);
+     checkForMatch();
    }
  };
 
@@ -59,4 +60,20 @@ let toggledCards = [];
 function addToggledCard(clickTarget) {
   toggledCards.push(clickTarget);
 
-}
+};
+
+function checkForMatch() {
+  if (toggledCards[0].firstElementChild.className === toggledCards[1].firstElementChild.className) {
+    toggledCards[0].classList.toggle('match');
+    toggledCards[1].classList.toggle('match');
+    toggledCards = [];
+  } else {
+    setTimeout(noMatch(), 2000);
+  }
+};
+
+function noMatch() {
+  toggleCard(toggledCards[0]);
+  toggleCard(toggledCards[1]);
+  toggledCards = [];
+};
