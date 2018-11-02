@@ -43,7 +43,12 @@ function shuffle(array) {
 
  function flipCard(event) {
    const clickTarget = event.target;
-   if (clickTarget.classList.contains('card') && toggledCards.length <2) {
+   if (
+     clickTarget.classList.contains('card') &&
+     !clickTarget.classList.contains('match') &&
+     toggledCards.length < 2 &&
+     !toggledCards.includes(clickTarget)
+   ) {
      toggleCard(clickTarget);
      addToggledCard(clickTarget);
      checkForMatch();
