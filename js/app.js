@@ -72,8 +72,10 @@ function checkForMatch() {
     toggledCards[0].classList.toggle('match');
     toggledCards[1].classList.toggle('match');
     toggledCards = [];
+    addMove();
   } else {
     setTimeout(noMatch, 1000);
+    addMove();
   }
 };
 
@@ -91,3 +93,11 @@ function shuffleDeck() {
   }
 };
 shuffleDeck();
+
+let moves = 0;
+
+function addMove() {
+  moves++;
+  const movesText = document.querySelector('.moves');
+  movesText.innerHTML = moves;
+};
