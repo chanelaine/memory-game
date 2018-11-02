@@ -43,8 +43,9 @@ function shuffle(array) {
 
  function flipCard(event) {
    const clickTarget = event.target;
-   if (clickTarget.classList.contains('card')) {
+   if (clickTarget.classList.contains('card') && toggledCards.length <2) {
      toggleCard(clickTarget);
+     addToggledCard(clickTarget);
    }
  };
 
@@ -52,3 +53,10 @@ function toggleCard(clickTarget) {
   clickTarget.classList.toggle('open');
   clickTarget.classList.toggle('show');
 };
+
+let toggledCards = [];
+
+function addToggledCard(clickTarget) {
+  toggledCards.push(clickTarget);
+
+}
