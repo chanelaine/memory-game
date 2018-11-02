@@ -49,6 +49,7 @@ function shuffle(array) {
      toggledCards.length < 2 &&
      !toggledCards.includes(clickTarget)
    ) {
+     startTimer();
      toggleCard(clickTarget);
      addToggledCard(clickTarget);
      checkForMatch();
@@ -117,5 +118,26 @@ function removeStar() {
       star.style.display = 'none';
       break;
     }
+  }
+};
+
+let time = 0;
+let timerId;
+
+function startTimer() {
+  timerId = setInterval(() => {
+    time++;
+    displayTime();
+  }, 1000);
+};
+
+function displayTime() {
+  const timer = document.querySelector('.timer');
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  if (seconds < 10) {
+    timer.innerHTML = `${minutes}:0${seconds}`;
+  } else {
+    timer.innerHTML = `${minutes}:${seconds}`;
   }
 };
