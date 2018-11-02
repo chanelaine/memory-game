@@ -68,7 +68,7 @@ function checkForMatch() {
     toggledCards[1].classList.toggle('match');
     toggledCards = [];
   } else {
-    setTimeout(noMatch(), 2000);
+    setTimeout(noMatch, 1000);
   }
 };
 
