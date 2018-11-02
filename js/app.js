@@ -73,9 +73,11 @@ function checkForMatch() {
     toggledCards[1].classList.toggle('match');
     toggledCards = [];
     addMove();
+    checkScore();
   } else {
     setTimeout(noMatch, 1000);
     addMove();
+    checkScore();
   }
 };
 
@@ -100,4 +102,20 @@ function addMove() {
   moves++;
   const movesText = document.querySelector('.moves');
   movesText.innerHTML = moves;
+};
+
+function checkScore() {
+  if (moves === 12 || moves === 21) {
+    removeStar();
+  }
+};
+
+function removeStar() {
+  const starList = document.querySelectorAll('.stars li');
+  for (star of starList) {
+    if (star.style.display != 'none') {
+      star.style.display = 'none';
+      break;
+    }
+  }
 };
